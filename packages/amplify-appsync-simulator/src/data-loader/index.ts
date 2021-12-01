@@ -1,7 +1,6 @@
 import { DynamoDBDataLoader } from './dynamo-db';
 import { NoneDataLoader } from './none';
 import { LambdaDataLoader } from './lambda';
-import { OpenSearchDataLoader } from './opensearch';
 
 export interface AmplifyAppSyncSimulatorDataLoader {
   load(payload: any, extraData?: any): Promise<object | null>;
@@ -33,4 +32,3 @@ export function removeDataLoader(sourceType: string) {
 addDataLoader('AMAZON_DYNAMODB', DynamoDBDataLoader);
 addDataLoader('NONE', NoneDataLoader);
 addDataLoader('AWS_LAMBDA', LambdaDataLoader);
-addDataLoader('AMAZON_ELASTICSEARCH', OpenSearchDataLoader);

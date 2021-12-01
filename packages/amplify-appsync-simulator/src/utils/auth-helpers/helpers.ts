@@ -9,28 +9,12 @@ import {
 export type JWTToken = {
   iss: string;
   sub: string;
-  aud: string;
   exp: number;
+  aud: string;
   iat: number;
-  event_id?: string;
-  token_use?: string;
-  auth_time?: number;
-  nbf?: number;
+  nbf: number;
   username?: string;
-  email?: string;
-  groups?: string[];
   'cognito:username'?: string;
-  'cognito:groups'?: string[];
-};
-
-export type IAMToken = {
-  accountId: string;
-  userArn: string;
-  username: string;
-  cognitoIdentityPoolId?: string;
-  cognitoIdentityId?: string;
-  cognitoIdentityAuthType?: 'authenticated' | 'unauthenticated';
-  cognitoIdentityAuthProvider?: string;
 };
 
 export function extractJwtToken(authorization: string): JWTToken {

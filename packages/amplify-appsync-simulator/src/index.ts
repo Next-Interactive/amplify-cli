@@ -18,11 +18,14 @@ import {
   AmplifyAppSyncAPIConfig,
   AppSyncSimulatorMappingTemplate,
 } from './type-definition';
-import { filterSubscriptions } from './utils';
-export { AppSyncGraphQLExecutionContext, JWTToken, IAMToken } from './utils';
+import { filterSubscriptions } from './utils/graphql-runner/subscriptions-filter';
 export * from './type-definition';
-export * from './velocity';
 
+const DEFAULT_SCHEMA = `
+type Query {
+  noop: String
+}
+`;
 export class AmplifyAppSyncSimulator {
   private resolvers;
   private dataSources: Map<string, AmplifyAppSyncSimulatorDataLoader>;

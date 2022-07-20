@@ -31,6 +31,7 @@ export type ConnectionContext = {
   socket: WebSocket;
   request: IncomingMessage;
   subscriptions: Map<string, WebsocketSubscription>;
+  // @ts-ignore
   pingIntervalHandle?: NodeJS.Timeout;
   isConnectionInitialized: boolean;
 };

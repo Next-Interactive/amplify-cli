@@ -18,3 +18,5 @@ Ce package est utilisé en dépendance du package serverless-appsync-simulator
 
 Ce projet étant un sous package du projet amplify-cli, il est compliqué d'utiliser les fonctionnalitées de rebase/merge de git pour les forks.
 Le plus simple est de récupérer la dernière version en lieu et place de ce dépot, et d'y réimplémenter les deux commits (peu de modifs)
+
+Il faut aussi buildé le projet avec typescript (`npx tsc`)

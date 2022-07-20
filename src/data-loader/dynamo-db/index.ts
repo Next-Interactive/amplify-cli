@@ -42,8 +42,8 @@ export class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLoader {
         case 'Scan':
           return await this.scan(payload);
 
-        case 'BatchGetItem'
-	  return await this.batchGetItem(payload);
+        case 'BatchGetItem':
+	      return await this.batchGetItem(payload);
         case 'BatchPutItem':
         case 'BatchDeleteItem':
           throw new Error(`Operation  ${payload.operation} not implemented`);

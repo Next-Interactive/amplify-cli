@@ -10,7 +10,7 @@ Différence avec le package original est que celui-ci apporte les modifications 
 - de la PR https://github.com/aws-amplify/amplify-cli/pull/5965 afin de prendre en charge le support BatchGetItem dans appsync-simulator pour les requêtes DynamoDB
 Commit : feat: add BatchGetItem to appsync-simulator(#5963)  
 - de la prise en charge d'un objet contenant de multiple clés api et non seulement une afin de faire marcher notre implémentation des mutations et de la bridgeKey
-Commit : 2fff8e51f05beca7db21d729422e738603e8e9a9
+Commit : feat: multiple api key support 
 
 Ce package est utilisé en dépendance du package serverless-appsync-simulator 
 

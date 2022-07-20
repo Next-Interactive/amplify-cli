@@ -1,5 +1,5 @@
 import { DynamoDB } from 'aws-sdk';
-import { unmarshall, nullIfEmpty } from './utils';
+import { unmarshall, nullIfEmpty, mapTableObject } from './utils';
 import { AmplifyAppSyncSimulatorDataLoader } from '..';
 
 type DynamoDBConnectionConfig = {
@@ -42,7 +42,8 @@ export class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLoader {
         case 'Scan':
           return await this.scan(payload);
 
-        case 'BatchGetItem':
+        case 'BatchGetItem'
+	  return await this.batchGetItem(payload);
         case 'BatchPutItem':
         case 'BatchDeleteItem':
           throw new Error(`Operation  ${payload.operation} not implemented`);
@@ -60,6 +61,22 @@ export class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLoader {
     }
   }
 
+   private async batchGetItem(payload: { tables: { [tableName: string]: { keys: DynamoDB.Key[]; consistentRead?: boolean } } }) {
+    const { Responses, UnprocessedKeys } = await this.client
+      .batchGetItem({
+        RequestItems: mapTableObject(payload.tables, request => {
+          const { keys, consistentRead = false } = request;
+          return { Keys: keys, ConsistentRead: consistentRead };
+        }),
+      })
+      .promise();
+
+    return {
+      data: mapTableObject(Responses, items => items.map(item => unmarshall(item))),
+      unprocessedKeys: mapTableObject(UnprocessedKeys || {}, request => request.Keys.map(key => unmarshall(key))),
+    };
+  }
+  
   private async getItem(payload: any): Promise<object | null> {
     const { consistentRead = false } = payload;
     const result = await this.client

@@ -1,4 +1,5 @@
 import { JavaArray } from './array';
+import { JavaInteger } from './integer';
 export declare class JavaMap {
     private map;
     private mapper;
@@ -14,7 +15,7 @@ export declare class JavaMap {
     put(key: any, value: any): any;
     putAll(map: object | JavaMap): void;
     remove(key: any): any;
-    size(): number;
+    size(): JavaInteger;
     values(): JavaArray;
     toJSON(): {};
 }

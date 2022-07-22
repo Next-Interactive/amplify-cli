@@ -33,7 +33,7 @@ export declare class SubscriptionServer {
                 mqttConnections: {
                     url: string;
                     topics: string[];
-                    client: string;
+                    client: any;
                 }[];
                 newSubscriptions: {
                     [x: number]: {

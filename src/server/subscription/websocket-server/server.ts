@@ -31,6 +31,7 @@ export type ConnectionContext = {
   socket: WebSocket;
   request: IncomingMessage;
   subscriptions: Map<string, WebsocketSubscription>;
+  // @ts-ignore
   pingIntervalHandle?: NodeJS.Timeout;
   isConnectionInitialized: boolean;
 };
@@ -214,7 +215,7 @@ export class WebsocketSubscriptionServer {
   private setupPing = (connectionContext: ConnectionContext): void => {
     connectionContext.pingIntervalHandle = setInterval(() => {
       this.sendMessage(connectionContext, undefined, MESSAGE_TYPES.GQL_CONNECTION_KEEP_ALIVE, undefined);
-    }, this.options.keepAlive);
+    }, this.options.keepAlive) as any;
   };
 
   private onConnectionInit = (connectionContext: ConnectionContext, message: GQLMessageConnectionInit): void => {

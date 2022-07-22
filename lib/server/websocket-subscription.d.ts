@@ -1,5 +1,4 @@
-/// <reference types="node" />
-import { IncomingMessage, Server } from 'http';
+import { Server } from 'http';
 import { AmplifyAppSyncSimulator } from '..';
 import { ConnectionContext } from './subscription/websocket-server/server';
 export declare class AppSyncSimulatorSubscriptionServer {

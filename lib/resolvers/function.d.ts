@@ -8,5 +8,6 @@ export declare class AmplifySimulatorFunction extends AppSyncBaseResolver {
         result: any;
         stash: any;
         hadException: boolean;
+        args: any;
     }>;
 }

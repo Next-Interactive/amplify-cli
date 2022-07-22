@@ -30,7 +30,7 @@ export declare const dynamodbUtils: {
     toListJson(value: any): string;
     toMap(value: any): any;
     toMapJson(value: any): string;
-    toMapValues(values: any): {};
+    toMapValues(values: any): any;
     toMapValuesJson(values: any): string;
     toS3ObjectJson(): never;
     toS3Object(): never;

@@ -16,12 +16,12 @@ export declare class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLo
     private tableName;
     constructor(ddbConfig: DynamoDBLoaderConfig);
     load(payload: any): Promise<object | null>;
+    private batchGetItem;
     private getItem;
     private putItem;
     private query;
     private updateItem;
     private deleteItem;
     private scan;
-    private batchGetItem;
 }
 export {};

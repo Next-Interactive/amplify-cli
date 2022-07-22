@@ -1,6 +1,4 @@
-import { AppSyncSimulatorDirectiveBase } from './directive-base';
-export declare class AwsSubscribe extends AppSyncSimulatorDirectiveBase {
-    static typeDefinitions: string;
-    name: string;
-    visitFieldDefinition(field: any): void;
-}
+import { GraphQLSchema } from 'graphql';
+import { AmplifyAppSyncSimulator } from '../..';
+export declare const getAwsSubscribeDirective: () => string;
+export declare const getAwsSubscribeDirectiveTransformer: (simulatorContext: AmplifyAppSyncSimulator) => (schema: GraphQLSchema) => GraphQLSchema;

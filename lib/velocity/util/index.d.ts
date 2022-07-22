@@ -1,6 +1,7 @@
 export { TemplateSentError, Unauthorized, ValidateError } from './errors';
 import { GraphQLResolveInfo } from 'graphql';
-export declare function create(errors: any[], now: Date, info: GraphQLResolveInfo): {
+import { AppSyncGraphQLExecutionContext } from '../../utils/graphql-runner';
+export declare function create(errors: any[], now: Date, info: GraphQLResolveInfo, context: AppSyncGraphQLExecutionContext): {
     dynamodb: {
         toDynamoDB(value: any): any;
         $toSet(values: any, fn?: (value: any) => any): any;
@@ -33,15 +34,15 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
         toListJson(value: any): string;
         toMap(value: any): any;
         toMapJson(value: any): string;
-        toMapValues(values: any): {};
+        toMapValues(values: any): any;
         toMapValuesJson(values: any): string;
         toS3ObjectJson(): never;
         toS3Object(): never;
         fromS3ObjectJson(): never;
     };
     list: {
-        copyAndRetainAll(list: any[], intersect: any[]): any[];
-        copyAndRemoveAll(list: any[], toRemove: any[]): any[];
+        copyAndRetainAll(list: any[], intersect: any[]): any;
+        copyAndRemoveAll(list: any[], toRemove: any[]): any;
         sortList(list: any[], desc: boolean, property: string): any;
     };
     map: {
@@ -81,14 +82,15 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
     };
     rds: {
         toJsonString: (rdsObject: any) => string;
+        toJsonObject: (rdsString: any) => any;
     };
     quiet: () => string;
     qr: () => string;
     escapeJavaScript(value: any): any;
     urlEncode(value: any): string;
     urlDecode(value: any): string;
-    base64Encode(value: any): string;
-    base64Decode(value: any): string;
+    base64Encode(value: any): any;
+    base64Decode(value: any): any;
     parseJson(value: any): any;
     toJson(value: any): string;
     autoId(): any;
@@ -110,4 +112,5 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
     isMap(value: any): boolean | Map<any, any>;
     typeOf(value: any): "Null" | "List" | "Map" | "Number" | "String" | "Boolean" | "Object";
     matches(pattern: any, value: any): boolean;
+    authType(): "API Key Authorization" | "IAM Authorization" | "User Pool Authorization" | "Open ID Connect Authorization";
 };

@@ -5,8 +5,8 @@ export declare const generalUtils: {
     escapeJavaScript(value: any): any;
     urlEncode(value: any): string;
     urlDecode(value: any): string;
-    base64Encode(value: any): string;
-    base64Decode(value: any): string;
+    base64Encode(value: any): any;
+    base64Decode(value: any): any;
     parseJson(value: any): any;
     toJson(value: any): string;
     autoId(): any;

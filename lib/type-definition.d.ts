@@ -43,12 +43,18 @@ export interface AppSyncSimulatorUnitResolver extends AppSyncSimulatorUnitResolv
 export interface AppSyncSimulatorPipelineResolver extends AppSyncSimulatorUnitResolverConfig {
     functions: string[];
 }
+export declare const enum AppSyncSimulatorDataSourceType {
+    DynamoDB = "AMAZON_DYNAMODB",
+    Lambda = "AWS_LAMBDA",
+    OpenSearch = "AMAZON_ELASTICSEARCH",
+    None = "NONE"
+}
 export interface AppSyncSimulatorDataSourceBaseConfig {
     name: string;
-    type: string;
+    type: AppSyncSimulatorDataSourceType | `${AppSyncSimulatorDataSourceType}`;
 }
 export interface AppSyncSimulatorDataSourceDDBConfig extends AppSyncSimulatorDataSourceBaseConfig {
-    type: 'AMAZON_DYNAMODB';
+    type: AppSyncSimulatorDataSourceType.DynamoDB | `${AppSyncSimulatorDataSourceType.DynamoDB}`;
     config: {
         endpoint: string;
         region?: string;
@@ -58,10 +64,10 @@ export interface AppSyncSimulatorDataSourceDDBConfig extends AppSyncSimulatorDat
     };
 }
 export interface AppSyncSimulatorDataSourceNoneConfig extends AppSyncSimulatorDataSourceBaseConfig {
-    type: 'None';
+    type: AppSyncSimulatorDataSourceType.None | `${AppSyncSimulatorDataSourceType.None}`;
 }
 export interface AppSyncSimulatorDataSourceLambdaConfig extends AppSyncSimulatorDataSourceBaseConfig {
-    type: 'AWS_LAMBDA';
+    type: AppSyncSimulatorDataSourceType.Lambda | `${AppSyncSimulatorDataSourceType.Lambda}`;
     invoke: Function;
 }
 export declare type AppSyncSimulatorDataSourceConfig = AppSyncSimulatorDataSourceDDBConfig | AppSyncSimulatorDataSourceNoneConfig | AppSyncSimulatorDataSourceLambdaConfig;
@@ -70,7 +76,8 @@ export declare enum AmplifyAppSyncSimulatorAuthenticationType {
     API_KEY = "API_KEY",
     AWS_IAM = "AWS_IAM",
     AMAZON_COGNITO_USER_POOLS = "AMAZON_COGNITO_USER_POOLS",
-    OPENID_CONNECT = "OPENID_CONNECT"
+    OPENID_CONNECT = "OPENID_CONNECT",
+    AWS_LAMBDA = "AWS_LAMBDA"
 }
 export declare type AmplifyAppSyncAuthenticationProviderAPIConfig = {
     authenticationType: AmplifyAppSyncSimulatorAuthenticationType.API_KEY;
@@ -91,10 +98,21 @@ export declare type AmplifyAppSyncAuthenticationProviderOIDCConfig = {
         ClientId?: string;
     };
 };
-export declare type AmplifyAppSyncAuthenticationProviderConfig = AmplifyAppSyncAuthenticationProviderAPIConfig | AmplifyAppSyncAuthenticationProviderIAMConfig | AmplifyAppSyncAuthenticationProviderCognitoConfig | AmplifyAppSyncAuthenticationProviderOIDCConfig;
+export declare type AmplifyAppSyncAuthenticationProviderLambdaConfig = {
+    authenticationType: AmplifyAppSyncSimulatorAuthenticationType.AWS_LAMBDA;
+    lambdaAuthorizerConfig: {
+        AuthorizerUri: string;
+        AuthorizerResultTtlInSeconds?: number;
+    };
+};
+export declare type AmplifyAppSyncAuthenticationProviderConfig = AmplifyAppSyncAuthenticationProviderAPIConfig | AmplifyAppSyncAuthenticationProviderIAMConfig | AmplifyAppSyncAuthenticationProviderCognitoConfig | AmplifyAppSyncAuthenticationProviderOIDCConfig | AmplifyAppSyncAuthenticationProviderLambdaConfig;
 export declare type AmplifyAppSyncAPIConfig = {
     name: string;
     defaultAuthenticationType: AmplifyAppSyncAuthenticationProviderConfig;
+    authRoleName?: string;
+    unAuthRoleName?: string;
+    authAccessKeyId?: string;
+    accountId?: string;
     apiKey?: string;
     additionalAuthenticationProviders: AmplifyAppSyncAuthenticationProviderConfig[];
 };

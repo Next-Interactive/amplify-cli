@@ -1,6 +1,6 @@
 import { AppSyncVTLTemplate } from '../type-definition';
 import { AmplifyAppSyncSimulator } from '..';
-import { AppSyncGraphQLExecutionContext } from '../utils/graphql-runner';
+import { AppSyncGraphQLExecutionContext } from '../utils';
 import { GraphQLResolveInfo } from 'graphql';
 export declare type AppSyncSimulatorRequestContext = {
     jwt?: {
@@ -18,6 +18,8 @@ export declare type AppSyncVTLRenderContext = {
     prevResult?: any;
     error?: any;
 };
+export declare class VelocityTemplateParseError extends Error {
+}
 export declare class VelocityTemplate {
     private simulatorContext;
     private compiler;
@@ -26,6 +28,7 @@ export declare class VelocityTemplate {
     render(ctxValues: AppSyncVTLRenderContext, requestContext: AppSyncGraphQLExecutionContext, info?: GraphQLResolveInfo): {
         result: any;
         stash: any;
+        args: any;
         errors: any;
         isReturn: boolean;
         hadException: boolean;

@@ -1,3 +1,4 @@
+import { JavaInteger } from './integer';
 export declare class JavaArray extends Array<any> {
     private mapper;
     constructor(values: any[], mapper: Function);
@@ -10,6 +11,7 @@ export declare class JavaArray extends Array<any> {
     remove(value: any): void;
     removeAll(value: any): void;
     retainAll(): void;
-    size(): number;
+    size(): JavaInteger;
     toJSON(): any[];
+    indexOf(obj: any): number;
 }

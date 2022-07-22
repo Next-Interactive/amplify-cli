@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import pino from 'pino';
 import { EventEmitter } from 'events';
 import { Server } from 'http';

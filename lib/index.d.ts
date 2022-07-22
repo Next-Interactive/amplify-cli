@@ -5,7 +5,9 @@ export { addDataLoader, removeDataLoader } from './data-loader';
 import { PubSub } from 'graphql-subscriptions';
 import { AmplifySimulatorFunction } from './resolvers/function';
 import { AppSyncSimulatorServerConfig, AmplifyAppSyncSimulatorConfig, AmplifyAppSyncAPIConfig } from './type-definition';
+export { AppSyncGraphQLExecutionContext, JWTToken, IAMToken } from './utils';
 export * from './type-definition';
+export * from './velocity';
 export declare class AmplifyAppSyncSimulator {
     private resolvers;
     private dataSources;

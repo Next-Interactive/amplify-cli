@@ -1,4 +1,5 @@
 import { JavaArray } from './array';
+import { JavaInteger } from './integer';
 export declare class JavaString {
     value: string;
     constructor(str: any);
@@ -6,9 +7,9 @@ export declare class JavaString {
     contains(str: any): boolean;
     endsWith(suffix: any): boolean;
     equals(str: any): boolean;
-    indexOf(val: any, fromIndex?: number): number;
+    indexOf(val: any, fromIndex?: number): JavaInteger;
     isEmpty(): boolean;
-    lastIndexOf(val: any, fromIndex?: number): number;
+    lastIndexOf(val: any, fromIndex?: number): JavaInteger;
     replace(find: any, replace: any): JavaString;
     replaceAll(find: any, replace: any): JavaString;
     replaceFirst(find: any, replace: any): JavaString;
@@ -22,5 +23,6 @@ export declare class JavaString {
     toString(): string;
     toIdString(): string;
     trim(): JavaString;
-    length(): number;
+    length(): JavaInteger;
+    toJson(): string;
 }

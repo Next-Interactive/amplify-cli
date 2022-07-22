@@ -1,1 +1,1 @@
-export declare function map(value: any): any;
+export declare function map(value: any, hint?: string): any;

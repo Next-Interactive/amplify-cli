@@ -66,7 +66,6 @@
     "@types/node": "^12.12.6",
     "@types/pino": "^6.3.11",
     "@types/ws": "^7.4.4",
-    "@aws-amplify/amplify-graphiql-explorer": "2.4.7",
     "jsonwebtoken": "^8.5.1"
   },
   "jest": {

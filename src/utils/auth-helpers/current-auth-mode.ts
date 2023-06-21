@@ -5,7 +5,7 @@ export function getAuthorizationMode(
   headers: Record<string, string | string[]>,
   appSyncConfig: AmplifyAppSyncAPIConfig,
 ): AmplifyAppSyncSimulatorAuthenticationType {
-  const apiKey = extractHeader(headers, 'x-api-key') as any;
+  const apiKey = extractHeader(headers, 'x-api-key');
   const rawAuthHeader = extractHeader(headers, 'Authorization');
   const authorization = Array.isArray(rawAuthHeader) ? rawAuthHeader[0] : rawAuthHeader;
   const jwtToken = extractJwtToken(authorization);
@@ -17,7 +17,7 @@ export function getAuthorizationMode(
 
   if (isApiKeyAllowed) {
     if (apiKey) {
-      if ((typeof appSyncConfig.apiKey === "string" && appSyncConfig.apiKey === apiKey) || (typeof appSyncConfig.apiKey === 'object' && apiKey.includes(apiKey))) {
+      if (appSyncConfig.apiKey === apiKey) {
         return AmplifyAppSyncSimulatorAuthenticationType.API_KEY;
       }
 

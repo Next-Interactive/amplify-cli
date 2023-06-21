@@ -4,7 +4,7 @@ export function nullIfEmpty(obj: object): object | null {
   return Object.keys(obj).length === 0 ? null : obj;
 }
 
-export function unmarshall(raw, isRaw: boolean = true) {
+export function unmarshall(raw, isRaw = true) {
   const content = isRaw ? Converter.unmarshall(raw) : raw;
   // Because of the funky set type used in the aws-sdk, we need to further unwrap
   // to find if there is a set that needs to be unpacked into an array.
@@ -16,7 +16,7 @@ export function unmarshall(raw, isRaw: boolean = true) {
 
   // Unwrap lists
   if (Array.isArray(content)) {
-    return content.map(value => unmarshall(value, false));
+    return content.map((value) => unmarshall(value, false));
   }
 
   // Unwrap maps
@@ -26,14 +26,9 @@ export function unmarshall(raw, isRaw: boolean = true) {
         ...sum,
         [key]: unmarshall(value, false),
       }),
-      {}
+      {},
     );
   }
 
   return content;
-}
-
-type TableObject<T> = { [tableName: string]: T };
-export function mapTableObject<T, R>(tableObject: TableObject<T>, mapper: (inp: T) => R): TableObject<R> {
-  return Object.fromEntries(Object.entries(tableObject).map(([tableName, value]) => [tableName, mapper(value)]));
 }

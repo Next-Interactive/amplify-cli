@@ -20,10 +20,10 @@
     "access": "public"
   },
   "scripts": {
-    "copy-assets": "rimraf ./public",
+    "copy-assets": "rm -rf ./public",
     "build": "yarn copy-assets && tsc",
     "build-tests": "tsc --build tsconfig.tests.json",
-    "clean": "rimraf ./lib tsconfig.tsbuildinfo tsconfig.tests.tsbuildinfo node_modules",
+    "clean": "rm -rf ./lib tsconfig.tsbuildinfo tsconfig.tests.tsbuildinfo node_modules",
     "watch": "tsc -w",
     "start": "node ./lib/index.js",
     "test": "jest --logHeapUsage --forceExit",

@@ -7,7 +7,7 @@
     "outDir": "lib",
     "composite": true,
     "rootDir": "./src",
-    "lib": ["es2015", "es2016.array.include", "esnext.asynciterable", "dom"],
+    "lib": ["es2019", "es2015", "es2016.array.include", "esnext.asynciterable", "dom"],
     "declaration": true,
     "skipLibCheck": true
   },

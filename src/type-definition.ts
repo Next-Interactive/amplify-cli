@@ -135,7 +135,7 @@ export type AmplifyAppSyncAPIConfig = {
   unAuthRoleName?: string; // assumed-role/unAuthRole/CognitoIdentityCredentials
   authAccessKeyId?: string; // when accessKeyId matches assume the authRole. Otherwise, use unAuthRole
   accountId?: string;
-  apiKey?: string;
+  apiKey?: any;
   additionalAuthenticationProviders: AmplifyAppSyncAuthenticationProviderConfig[];
 };
 

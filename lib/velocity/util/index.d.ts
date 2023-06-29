@@ -112,7 +112,7 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
     isBoolean(value: any): boolean;
     isList(value: any): boolean;
     isMap(value: any): boolean | Map<any, any>;
-    typeOf(value: any): "String" | "Null" | "List" | "Map" | "Number" | "Boolean" | "Object";
+    typeOf(value: any): "Null" | "List" | "Map" | "Number" | "String" | "Boolean" | "Object";
     matches(pattern: any, value: any): boolean;
     authType(): "API Key Authorization" | "IAM Authorization" | "User Pool Authorization" | "Open ID Connect Authorization";
 };

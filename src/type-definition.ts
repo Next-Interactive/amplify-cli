@@ -49,7 +49,7 @@ export interface AppSyncSimulatorPipelineResolver extends AppSyncSimulatorUnitRe
 export const enum AppSyncSimulatorDataSourceType {
   DynamoDB = 'AMAZON_DYNAMODB',
   Lambda = 'AWS_LAMBDA',
-  OpenSearch = 'AMAZON_ELASTICSEARCH',
+  OpenSearch = 'AMAZON_OPENSEARCH_SERVICE',
   None = 'NONE',
 }
 

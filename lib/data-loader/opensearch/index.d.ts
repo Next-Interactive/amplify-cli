@@ -1,4 +1,6 @@
 import { AmplifyAppSyncSimulatorDataLoader } from '..';
 export declare class OpenSearchDataLoader implements AmplifyAppSyncSimulatorDataLoader {
-    load(request: any): any;
+    private _config;
+    constructor(_config: any);
+    load(payload: any): Promise<any>;
 }

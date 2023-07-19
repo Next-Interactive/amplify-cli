@@ -15,7 +15,7 @@ export declare class JavaString {
     replaceFirst(find: any, replace: any): JavaString;
     matches(regexString: any): boolean;
     split(regexString: any, limit?: any): JavaArray;
-    startsWith(prefix: any, toffset?: number): boolean;
+    startsWith(prefix: any, offset?: number): boolean;
     substring(beginIndex: any, endIndex?: number): string;
     toJSON(): string;
     toLowerCase(): JavaString;

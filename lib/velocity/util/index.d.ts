@@ -3,7 +3,7 @@ import { GraphQLResolveInfo } from 'graphql';
 import { AppSyncGraphQLExecutionContext } from '../../utils/graphql-runner';
 export declare function create(errors: any[], now: Date, info: GraphQLResolveInfo, context: AppSyncGraphQLExecutionContext): {
     dynamodb: {
-        toDynamoDB(value: any): any;
+        toDynamoDB(value: any): import("aws-sdk/clients/dynamodb").AttributeValue;
         $toSet(values: any, fn?: (value: any) => any): any;
         toDynamoDBJson(value: any): string;
         toString(value: any): any;
@@ -34,7 +34,7 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
         toListJson(value: any): string;
         toMap(value: any): any;
         toMapJson(value: any): string;
-        toMapValues(values: any): any;
+        toMapValues(values: any): {};
         toMapValuesJson(values: any): string;
         toS3ObjectJson(): never;
         toS3Object(): never;
@@ -52,12 +52,13 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
     transform: {
         toDynamoDBConditionExpression: (condition: any) => string;
         toDynamoDBFilterExpression: (filter: any) => string;
+        toElasticsearchQueryDSL: (filter: any) => string;
     };
     now: Date;
     errors: any[];
     info: GraphQLResolveInfo;
     time: {
-        nowISO8601(t: any): string;
+        nowISO8601(): string;
         nowEpochSeconds(): number;
         nowEpochMilliSeconds(): number;
         nowFormatted(format: string, timezone?: string): string;
@@ -89,18 +90,19 @@ export declare function create(errors: any[], now: Date, info: GraphQLResolveInf
     escapeJavaScript(value: any): any;
     urlEncode(value: any): string;
     urlDecode(value: any): string;
-    base64Encode(value: any): any;
-    base64Decode(value: any): any;
+    base64Encode(value: any): string;
+    base64Decode(value: any): string;
     parseJson(value: any): any;
     toJson(value: any): string;
     autoId(): any;
+    autoUlid: () => string;
     unauthorized(): never;
     error(message: any, type?: any, data?: any, errorInfo?: any): never;
     appendError(message: any, type?: any, data?: any, errorInfo?: any): string;
     getErrors(): any;
     validate(allGood: any, message: any, errorType: any, data: any): string;
     isNull(value: any): boolean;
-    isNullOrEmpty(value: any): boolean;
+    isNullOrEmpty(value: any): any;
     isNullOrBlank(value: any): any;
     defaultIfNull(value: any, defaultValue?: string): any;
     defaultIfNullOrEmpty(value: any, defaultValue: any): any;

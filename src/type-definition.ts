@@ -49,7 +49,7 @@ export interface AppSyncSimulatorPipelineResolver extends AppSyncSimulatorUnitRe
 export const enum AppSyncSimulatorDataSourceType {
   DynamoDB = 'AMAZON_DYNAMODB',
   Lambda = 'AWS_LAMBDA',
-  OpenSearch = 'AMAZON_ELASTICSEARCH',
+  OpenSearch = 'AMAZON_OPENSEARCH_SERVICE',
   None = 'NONE',
 }
 
@@ -72,6 +72,7 @@ export interface AppSyncSimulatorDataSourceNoneConfig extends AppSyncSimulatorDa
 }
 export interface AppSyncSimulatorDataSourceLambdaConfig extends AppSyncSimulatorDataSourceBaseConfig {
   type: AppSyncSimulatorDataSourceType.Lambda | `${AppSyncSimulatorDataSourceType.Lambda}`;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   invoke: Function;
 }
 export type AppSyncSimulatorDataSourceConfig =
@@ -134,7 +135,7 @@ export type AmplifyAppSyncAPIConfig = {
   unAuthRoleName?: string; // assumed-role/unAuthRole/CognitoIdentityCredentials
   authAccessKeyId?: string; // when accessKeyId matches assume the authRole. Otherwise, use unAuthRole
   accountId?: string;
-  apiKey?: string;
+  apiKey?: any;
   additionalAuthenticationProviders: AmplifyAppSyncAuthenticationProviderConfig[];
 };
 
@@ -157,5 +158,5 @@ export type AmplifyAppSyncSimulatorRequestContext = {
   jwt?: object;
   requestAuthorizationMode: AmplifyAppSyncSimulatorAuthenticationType;
   request: Request;
-  appsyncErrors: {};
+  appsyncErrors: any[];
 };

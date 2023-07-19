@@ -1,5 +1,5 @@
 export declare const dynamodbUtils: {
-    toDynamoDB(value: any): any;
+    toDynamoDB(value: any): import("aws-sdk/clients/dynamodb").AttributeValue;
     $toSet(values: any, fn?: (value: any) => any): any;
     toDynamoDBJson(value: any): string;
     toString(value: any): any;
@@ -30,7 +30,7 @@ export declare const dynamodbUtils: {
     toListJson(value: any): string;
     toMap(value: any): any;
     toMapJson(value: any): string;
-    toMapValues(values: any): any;
+    toMapValues(values: any): {};
     toMapValuesJson(values: any): string;
     toS3ObjectJson(): never;
     toS3Object(): never;

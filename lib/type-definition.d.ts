@@ -46,7 +46,7 @@ export interface AppSyncSimulatorPipelineResolver extends AppSyncSimulatorUnitRe
 export declare const enum AppSyncSimulatorDataSourceType {
     DynamoDB = "AMAZON_DYNAMODB",
     Lambda = "AWS_LAMBDA",
-    OpenSearch = "AMAZON_ELASTICSEARCH",
+    OpenSearch = "AMAZON_OPENSEARCH_SERVICE",
     None = "NONE"
 }
 export interface AppSyncSimulatorDataSourceBaseConfig {
@@ -113,7 +113,7 @@ export declare type AmplifyAppSyncAPIConfig = {
     unAuthRoleName?: string;
     authAccessKeyId?: string;
     accountId?: string;
-    apiKey?: string;
+    apiKey?: any;
     additionalAuthenticationProviders: AmplifyAppSyncAuthenticationProviderConfig[];
 };
 export declare type AmplifyAppSyncSimulatorConfig = {
@@ -133,5 +133,5 @@ export declare type AmplifyAppSyncSimulatorRequestContext = {
     jwt?: object;
     requestAuthorizationMode: AmplifyAppSyncSimulatorAuthenticationType;
     request: Request;
-    appsyncErrors: {};
+    appsyncErrors: any[];
 };

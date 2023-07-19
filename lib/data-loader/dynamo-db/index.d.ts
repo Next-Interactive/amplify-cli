@@ -1,9 +1,9 @@
-import { AmplifyAppSyncSimulatorDataLoader } from '..';
+import { AmplifyAppSyncSimulatorDataLoader } from "..";
 declare type DynamoDBConnectionConfig = {
     endpoint: string;
-    region: 'us-fake-1';
-    accessKeyId: 'fake';
-    secretAccessKey: 'fake';
+    region: "us-fake-1";
+    accessKeyId: "fake";
+    secretAccessKey: "fake";
     tableName: string;
 };
 declare type DynamoDBLoaderConfig = {
@@ -16,6 +16,8 @@ export declare class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLo
     private tableName;
     constructor(ddbConfig: DynamoDBLoaderConfig);
     load(payload: any): Promise<object | null>;
+    private deleteAllItems;
+    private getAllItems;
     private batchGetItem;
     private getItem;
     private putItem;

@@ -7,7 +7,7 @@ declare module 'moment' {
     }
 }
 export declare const time: () => {
-    nowISO8601(t: any): string;
+    nowISO8601(): string;
     nowEpochSeconds(): number;
     nowEpochMilliSeconds(): number;
     nowFormatted(format: string, timezone?: string): string | null;

@@ -24,11 +24,12 @@ export declare class AmplifyAppSyncSimulator {
     reload(config: AmplifyAppSyncSimulatorConfig): void;
     init(config: AmplifyAppSyncSimulatorConfig): void;
     start(): Promise<void>;
-    stop(): void;
+    stop(): Promise<void>;
     getMappingTemplate(path: string): VelocityTemplate;
     getDataLoader(sourceName: string): AmplifyAppSyncSimulatorDataLoader;
     getFunction(functionName: string): AmplifySimulatorFunction;
     getResolver(typeName: any, fieldName: any): any;
+    clearData(): Promise<object>;
     get schema(): GraphQLSchema;
     get pubsub(): PubSub;
     asyncIterator(trigger: string): AsyncIterator<any>;

@@ -6,15 +6,15 @@ declare class AWSPhone extends GraphQLScalarType {
     });
 }
 export declare const scalars: {
-    AWSJSON: any;
-    AWSDate: any;
-    AWSTime: any;
-    AWSDateTime: any;
+    AWSJSON: GraphQLScalarType;
+    AWSDate: GraphQLScalarType;
+    AWSTime: GraphQLScalarType;
+    AWSDateTime: GraphQLScalarType;
     AWSPhone: AWSPhone;
-    AWSEmail: any;
-    AWSURL: any;
-    AWSTimestamp: any;
-    AWSIPAddress: any;
+    AWSEmail: GraphQLScalarType;
+    AWSURL: GraphQLScalarType;
+    AWSTimestamp: GraphQLScalarType;
+    AWSIPAddress: GraphQLScalarType;
 };
 export declare function wrapSchema(schemaString: any): string;
 export {};
